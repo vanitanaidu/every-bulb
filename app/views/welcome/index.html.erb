@@ -1,0 +1,23 @@
+<h2>-storename-</h2>
+
+<h3>Flower picks in the past </h3>
+
+<br>
+<% @products.each do |product| %>
+<br>
+
+  <%= image_tag "flowers/#{rand(9)}.jpg" %>
+<br>
+  <%= product.name %> (<%= product.date_delivered.strftime("%B %e, %Y") %>)
+<br>
+  <%= product.description %>
+<br>
+<br>
+<% end %>
+
+
+<% if !user_signed_in? %>
+  <h1>To view today's pick please sign in or sign up</h1>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
