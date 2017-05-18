@@ -1,8 +1,7 @@
 class DailyPickController < ApplicationController
 
   def index
-    @products = Product.all
-    @last_product = @products.last
+    @product = Product.where('DATE(date_delivered) = ?', Date.today)
   end
 
 

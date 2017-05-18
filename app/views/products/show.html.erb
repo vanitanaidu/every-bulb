@@ -1,11 +1,13 @@
-Show page for Admin
+<h2>Your New Pick of the day!</h2>
 
-<%= link_to image_tag(@product.image.url(:med)), @product.image.url %>
 
-<%= @product.name %>
+
+<p> <%= link_to image_tag(@product.image.url(:large)), @product.image.url %> <p>
+
+<p> <%= @product.name %> </p>
 <br>
 <%= @product.description %>
 <br>
-Delivery Date: Today! <%= @product.date_delivered %>
+Delivery Date: Today!(<%= @product.date_delivered.strftime("%B %e, %Y") %>)
 
 <%= button_to "Add to Cart"  %>

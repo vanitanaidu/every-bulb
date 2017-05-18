@@ -10,6 +10,7 @@
   <p> <%= f.label :date_delivered, "Delivery Day" %>: </p>
       <%= f.date_field :date_delivered, :value => Time.now.strftime("%B %e, %Y") %>
 
+      <%= f.label :image %>
       <%= f.file_field :image %>
 <br>
 <br>

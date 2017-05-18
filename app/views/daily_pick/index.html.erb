@@ -1,11 +1,10 @@
 
 <h1> Daily Pick </h1>
 
-
-<%= @last_product.name %>
+<%= @product.name %>
 <br>
-<%= @last_product.description %>
+<%= @product.description %>
 <br>
-Delivery Date: Today! <%= @last_product.date_delivered %>
+Delivery Date: Today! <%= @product.date_delivered.strftime("%B %e, %Y") %>
 
 <%= button_to "Add to Cart"  %>
