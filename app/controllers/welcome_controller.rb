@@ -1,16 +1,16 @@
 class WelcomeController < ApplicationController
-
-
   #  before_action :authenticate_user!
 
-
-  def index
-
+  def home
     @products = Product.all
   end
 
+ # (<%= product.date_delivered.strftime("%B %e, %Y") %>)
 
-    private
+
+# to render partials
+# This is the index page!
+# <%=  render 'layouts/daily_pick', locals: {@product: @product} %>
 
     # Today's flower pick (<%= date_today %>)
     # def require_admin

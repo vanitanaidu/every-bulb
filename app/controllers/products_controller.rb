@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
 
+  def index
+    @products = Product.all
+  end
+
   def new
-    if current_user.admin?
-      redirect_to new_admin_path
-    end
     @product = Product.new
   end
 
@@ -11,9 +12,8 @@ class ProductsController < ApplicationController
   def create
 
     @product = Product.new(product_params)
-
       if @product.save
-        redirect_to @product
+        redirect_to product_path(@product)
       else
         render 'admin/new'
       end
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :description, :image)
+      params.require(:product).permit(:name, :description, :date_delivered, :image)
     end
 
 end

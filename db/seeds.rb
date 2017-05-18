@@ -36,7 +36,7 @@
 
 end
 
-5.times do
+20.times do
 
 product = Product.create(name: Faker::Ancient.god, description: Faker::Lorem.sentence(10), date_delivered: Faker::Date.backward(70))
 

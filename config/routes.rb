@@ -5,10 +5,10 @@ Rails.application.routes.draw do
    devise_for :users
 
 
-  root 'welcome#index', as: 'welcome'
+  root 'welcome#home', as: 'welcome'
 
-  resources :products, only: [:index, :new, :create, :show]
-  resources :admin, only: [:new]
+  resources :products, only: [:index, :new, :create]
+  resources :daily_pick, only: [:index]
 
 
 end

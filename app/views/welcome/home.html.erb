@@ -1,7 +1,12 @@
 
-<h1> Flower Gallery </h1>
 
-<% @products.each do |product| %>
+<h2>-(storename)-</h2>
+
+<h1>Flower picks in the past </h1>
+
+<br>
+
+<% @products.sample(3).each do |product| %>
 <br>
 
   <%= image_tag "flowers/#{rand(9)}.jpg" %>
