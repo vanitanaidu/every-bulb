@@ -6,6 +6,6 @@ class DailyPickController < ApplicationController
   end
 
 
-# <%= image_tag @last_product.image.url %>
+
 
 end

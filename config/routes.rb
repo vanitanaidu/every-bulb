@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :products, only: [:index, :new, :create]
+  resources :products
+    post "/products/new", to: "products#new"
+    
   resources :daily_pick, only: [:index]
 
 

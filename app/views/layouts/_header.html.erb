@@ -6,6 +6,7 @@
       <h2> <%= link_to "Daily Pick", daily_pick_index_path %> </h2>
 
       <% if current_user.try(:admin?) %>
-          <%= link_to "Add Pick of the Day", new_product_path, :method=> :post %>
+      <h2> <%= link_to "Add Pick of the Day", new_product_path, method: :post %> </h2>
+
       <% end %>
 </nav>

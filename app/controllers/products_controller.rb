@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
+
     @products = Product.all
   end
 
@@ -15,13 +16,16 @@ class ProductsController < ApplicationController
       if @product.save
         redirect_to product_path(@product)
       else
-        render 'admin/new'
+        @product.errors.inspect
+        render :new
       end
   end
 
   def show
+    binding.pry
     @product = Product.find(params[:id])
   end
+
 
 
 

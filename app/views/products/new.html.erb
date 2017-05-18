@@ -1,5 +1,5 @@
 
-<%= form_for :product, :url => url_for(:action => "create", :id => @product), :html => {:multipart => true}  do |f| %>
+<%= form_for @product, html: { multipart: true } do |f| %>
   <p> <%= f.label :name %>: </p>
   <p>  <%= f.text_field :name %> </p>
 
@@ -10,8 +10,7 @@
   <p> <%= f.label :date_delivered, "Delivery Day" %>: </p>
       <%= f.date_field :date_delivered, :value => Time.now.strftime("%B %e, %Y") %>
 
-  <p> <%= f.label :image %>: </p>
-  <p> <%= f.file_field :image %> </p>
+      <%= f.file_field :image %>
 <br>
 <br>
   <%= f.submit "Create Flower" %>
