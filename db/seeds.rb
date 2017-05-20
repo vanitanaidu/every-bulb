@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.create(email: "vanita112003@gmail.com", password: 2801744, admin: true)
+user = User.create(email: "navita_6@hotmail.com", password: 363363, admin: false)
 
 3.times do
-    user = User.create(email: Faker::Internet.email, password: Faker::Internet.password(10, 20), admin: Faker::Boolean.boolean)
+    user = User.create(email: Faker::Internet.email, password: Faker::Internet.password(10, 20), admin: false)
 
 
     cart = Cart.new

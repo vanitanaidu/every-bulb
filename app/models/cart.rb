@@ -6,4 +6,6 @@ class Cart < ApplicationRecord
   has_many :products, through: :line_products
 
 
+
+  
 end

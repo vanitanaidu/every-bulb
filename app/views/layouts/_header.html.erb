@@ -3,7 +3,7 @@
 
       <h2> <%= link_to "Home", root_path %> </h2>
       <h2> <%= link_to "Gallery", products_path %> </h2>
-      <h2> <%= link_to "Daily Pick", daily_pick_index_path %> </h2>
+      <h2> <%= link_to "Daily Pick", daily_picks_path %> </h2>
 
       <% if current_user.try(:admin?) %>
       <h2> <%= link_to "Add Pick of the Day", new_product_path, method: :post %> </h2>
