@@ -5,8 +5,11 @@ class Product < ApplicationRecord
 
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
 
+
   validates :image, :attachment_presence => true
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+  #  /\Aimage\/.*\z/
   validates :date_delivered, uniqueness: true
   validate :delivery_date_cannot_be_in_the_past
 
