@@ -1,0 +1,18 @@
+
+development:
+  access_key_id: AKIAIFRV3S4MDJVSLLUQ
+  secret_access_key: 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
+
+production:
+  access_key_id: AKIAIFRV3S4MDJVSLLUQ
+  secret_access_key: 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
+
+
+  # Aws.config = {
+  #      :storage => :s3,
+  #        :s3_credentials => {
+  #          :access_key_id => 'AKIAIFRV3S4MDJVSLLUQ',
+  #          :secret_access_key => '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'},
+  #          :bucket => 'to-store-images-for-learn',
+  #          :s3_host_name => s3-us-east-2.amazonaws.com
+  #        }

@@ -6,10 +6,11 @@
 
 <br>
 
-<% @products.sample(3).each do |product| %>
+<% @products.sample(6).each do |product| %>
 <br>
 
-  <%= image_tag "flowers/#{rand(9)}.jpg" %>
+  <%= image_tag product.image.url(:large) %>
+
 <br>
   <%= product.name %> (<%= product.date_delivered ? product.delivery_date : "" %>)
 

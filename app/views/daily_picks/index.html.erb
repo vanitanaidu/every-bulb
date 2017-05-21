@@ -3,7 +3,7 @@
 
 
 
-    <p> <%= link_to image_tag(@product.image.url(:large)), @product.image.url %> <p>
+    <p> <%= link_to image_tag @product.image.url(:large) %> <p>
 
      <%= @product.name %>
      <br>
@@ -14,13 +14,10 @@
 
        <% if user_signed_in? %>
 
-           <%= form_for @product, url: product_line_products_path(product_id: @product), method: "post" do |f| %>
+           <%= form_for [@product, @line_product], method: :post do |f| %>
 
-                <%= f.fields_for :line_product do |line_form| %>
-
-                  <%= line_form.label :quantity  %>
-                  <%= line_form.text_field :quantity %>
-                <% end %>
+              <%= f.label :quantity  %>
+              <%= f.text_field :quantity %>
          <br>
             <%= f.submit "Add to cart" %>
             <% end %>

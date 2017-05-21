@@ -14,7 +14,8 @@ end
 
 
   resources :daily_picks, only: [:index]
-  resources :cart
+  resources :carts
+
 
 
 

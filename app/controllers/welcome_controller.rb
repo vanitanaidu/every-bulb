@@ -7,6 +7,8 @@ class WelcomeController < ApplicationController
 
  # (<%= product.date_delivered.strftime("%B %e, %Y") %>)
 
+ # image_tag "flowers/#{rand(9)}.jpg"
+
 
 # to render partials
 # This is the index page!

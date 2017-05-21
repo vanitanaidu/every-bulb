@@ -3,13 +3,20 @@ class Product < ApplicationRecord
   has_many :line_products
   has_many :carts, through: :line_products
 
-  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
+  has_attached_file :image,
+                    :styles => { small: "64x64", med: "100x100", large: "200x200" },
+                    :default_url => "missing_:style.png",
+                    :storage => :s3,
+                    :bucket => "to-store-images-for-learn"
+                  
+
+
 
 
   validates :image, :attachment_presence => true
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  #  /\Aimage\/.*\z/
+
   validates :date_delivered, uniqueness: true
   validate :delivery_date_cannot_be_in_the_past
 

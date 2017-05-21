@@ -8,4 +8,6 @@ class DailyPicksController < ApplicationController
   end
 
 
+
+    # <p> <%= link_to image_tag @product.image.url(:large), @product.image.url %> <p>
 end
