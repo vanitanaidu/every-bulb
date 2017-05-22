@@ -1,13 +1,14 @@
 class CartsController < ApplicationController
 
   def show
-     @cart = Cart.find(params[:id])
+     @cart = current_user.current_cart
   end
 
   def checkout
-    cart = Cart.find(params[:id])
+    cart = current_user.current_cart
     cart.checkout
-    redirect_to cart_path(cart)
+
+    redirect_to new_user_path
   end
 
 end

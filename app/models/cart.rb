@@ -8,9 +8,9 @@ class Cart < ApplicationRecord
 
 
   def total
+    total = 0
       self.line_products.each do |line_product|
-        binding.pry
-        total += line_product.product.price * line_product.quantity
+       total += line_product.product.price * line_product.quantity
       end
         total
     end
@@ -31,12 +31,10 @@ class Cart < ApplicationRecord
           current_product
         end
 
-    # current_item = line_items.find_by(product_id: product_id)
-    #    if current_item
-    #        current_item.quantity += line_item.quantity.to_i
-    #    else
-    #        current_item = line_items.build(product_id: product_id)
-    #    end
-    #    current_item
+        def checkout
+            self.status = "submitted"
+        end
+
+
 
 end

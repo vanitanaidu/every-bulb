@@ -12,18 +12,7 @@ class LineProductsController < ApplicationController
     else
       flash[:error] = 'There was a problem adding this item to your shopping bag.'
       redirect :back
-    #  @cart = current_user.current_cart ||= Cart.new
-
-    #  @line_product = @cart.line_products.new
-    #  @line_product.quantity = params[:line_product][:quantity]
-     #
-    #  @line_product.product_id = params[:product_id]
-    #  @line_product.save
-     #
-     #
-    #  @cart.add_product(params[:product_id])
-    #  @cart.save
-
+    
     end
   end
 

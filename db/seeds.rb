@@ -29,8 +29,7 @@ user = User.create(email: "navita_6@hotmail.com", password: 363363, admin: false
     recipient = Recipient.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, message: Faker::Friends.quote, mobile_number: Faker::PhoneNumber.cell_phone)
 
 
-    address = Address.create(street_1: Faker::Address.street_address, street_2: Faker::Address.secondary_address, city: Faker::Address.city, zip: Faker::Address.zip)
-    address.recipient = recipient
+    address = Address.create(street_1: Faker::Address.street_address, street_2: Faker::Address.secondary_address, city: Faker::Address.city, zip_code: Faker::Address.zip)
     address.user = user
     address.save
 

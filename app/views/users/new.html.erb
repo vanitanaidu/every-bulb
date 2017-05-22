@@ -1,0 +1,50 @@
+
+
+<label> Delivery Address </label>
+<%= form_for (@user, @message), url: users_path do |f| %>
+<br>
+    <%= f.fields_for :addresses do |address| %>
+
+<label> <%= address.object.address_type %> </label>
+      <fieldset>
+          <p><%= address.label :street_1 %>
+              <%= address.text_field :street_1 %></p>
+
+          <p><%= address.label :street_2 %>
+              <%= address.text_field :street_2 %></p>
+
+          <p><%= address.label :city %>
+              <%= address.text_field :city %></p>
+
+          <p><%= address.label :state %>
+              <%= address.text_field :state %></p>
+
+          <p><%= address.label :zip_code %>
+              <%= address.text_field :zip_code %></p>
+
+              <%= address.hidden_field :address_type %>
+
+   </fieldset>
+     <% end %>
+
+     <%= f.fields_for :messages do |message| %>
+
+     <label> Message to Recipient </label>
+       <fieldset>
+           <p><%= message.label :content %>
+               <%= message.text_area :content %></p>
+       </fieldset>
+      <% end %>
+
+
+<% @cart.line_products.each do |line_product| %>
+
+  <p><%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity  %>
+
+  <% end %> </p>
+
+<p> Grand Total: <strong>$<%= @cart.total.to_f %></strong> </p>
+
+
+      <%= f.submit %>
+      <% end %>

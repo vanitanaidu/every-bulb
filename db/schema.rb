@@ -10,24 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521210306) do
+ActiveRecord::Schema.define(version: 20170522160539) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street_1"
     t.string   "street_2"
     t.string   "city"
-    t.string   "state",        default: "NJ"
-    t.integer  "zip"
-    t.integer  "recipient_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "state"
+    t.integer  "zip_code"
+    t.string   "address_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "status",     default: "not submitted"
   end
 
   create_table "line_products", force: :cascade do |t|
@@ -36,6 +37,11 @@ ActiveRecord::Schema.define(version: 20170521210306) do
     t.integer  "cart_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text    "content"
+    t.integer "user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -48,12 +54,13 @@ ActiveRecord::Schema.define(version: 20170521210306) do
     t.string   "name"
     t.string   "description"
     t.datetime "date_delivered"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "price",              default: 30, null: false
   end
 
   create_table "recipients", force: :cascade do |t|

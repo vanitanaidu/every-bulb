@@ -4,9 +4,9 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.string :street_1
       t.string :street_2
       t.string :city
-      t.string :state, default: "NJ"
-      t.integer :zip
-      t.integer :recipient_id
+      t.string :state
+      t.integer :zip_code
+      t.string :address_type
 
       t.timestamps null: false
 
