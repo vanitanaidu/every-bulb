@@ -12,14 +12,14 @@ class User < ApplicationRecord
 
 
   def addresses_attributes=(addresses_attributes)
-    addresses_attributes.each do |address_attributes|
+    addresses_attributes.each do |i, address_attributes|
       self.addresses.build(address_attributes)
     end
   end
 
 
   def messages_attributes=(messages_attributes)
-    messages_attributes.each do |message_attributes|
+    messages_attributes.each do |i, message_attributes|
       self.messages.build(message_attributes)
     end
   end

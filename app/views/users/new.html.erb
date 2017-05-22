@@ -1,7 +1,7 @@
 
 
 <label> Delivery Address </label>
-<%= form_for (@user, @message), url: users_path do |f| %>
+<%= form_for (@user) do |f| %>
 <br>
     <%= f.fields_for :addresses do |address| %>
 
@@ -46,5 +46,5 @@
 <p> Grand Total: <strong>$<%= @cart.total.to_f %></strong> </p>
 
 
-      <%= f.submit %>
+      <%= f.submit "Review my Order" %>
       <% end %>

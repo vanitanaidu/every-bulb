@@ -18,7 +18,7 @@ end
   get 'carts/:id/checkout', to: 'carts#checkout'
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
 
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :update, :show] do
     resources :addresses
       resources :messages
   end

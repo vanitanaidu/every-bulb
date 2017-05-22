@@ -2,32 +2,32 @@ class UsersController < ApplicationController
 
   def new
     @user = current_user
-    @user.addresses.build(address_type: "Shipping")
-    @user.addresses.build(address_type: "Billing")
-    @message = @user.messages.build
+
+    1.times { @user.addresses.build(address_type: "Shipping") }
+    1.times { @user.addresses.build(address_type: "Billing") }
+    1.times { @user.messages.build }
     @cart = current_user.current_cart
 
   end
 
 
-  def create
-    @user = User.new(user_params)
-    @user.addresses_attributes = params[:user][:addresses_attributes]
-    @user.messages_attributes = params[:user][:messages_attributes]
+  def update
+
+    @user = current_user
+    @user.update_attributes(user_params)
 
     if @user.save
       redirect_to @user
     else
-      puts "some error"
       render :new
     end
 
   end
 
-
   def show
-  end
 
+    @user = current_user
+  end
 
 
 
