@@ -11,20 +11,4 @@
      <br>
      Delivery Date: Today! (<%= @product.delivery_date %>)
 
-       <% if user_signed_in? %>
-
-           <%= form_for [@product, @line_product], url: product_line_product_path(@product, @line_product), method: :post do |f| %>
-
-              <%= line_product.label :quantity  %>
-              <%= line_product.text_field :quantity %>
-              <br>
-
-
-            <%= f.submit "Add to cart" %>
-            <% end %>
-
-       <% else %>
-
-       Please sign in to add this item to the cart
-
-       <% end %>
+      

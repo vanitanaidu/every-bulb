@@ -4,12 +4,21 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
+    s3_host_name: 's3-us-east-2.amazonaws.com',
     s3_credentials: {
+      s3_region: ENV['AWS_REGION'],
       bucket: ENV['AWS_S3_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_host_name => 'http://bucket.s3.amazonaws.com'
+  #   :bucket => 'S3_BUCKET_NAME'
+  # }
 
 
   # Code is not reloaded between requests.

@@ -1,0 +1,20 @@
+This is the page that displays the imgae again and the quanity and add to cart feauture.. refer to no 2
+
+
+<% if user_signed_in? %>
+
+    <%= form_for [@product, @line_product], url: product_line_product_path(@product, @line_product), method: :post do |f| %>
+
+       <%= line_product.label :quantity  %>
+       <%= line_product.text_field :quantity %>
+       <br>
+
+
+     <%= f.submit "Add to cart" %>
+     <% end %>
+
+<% else %>
+
+Please sign in to add this item to the cart
+
+<% end %>

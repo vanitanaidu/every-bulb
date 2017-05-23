@@ -1,6 +1,12 @@
 class LineProductsController < ApplicationController
 
-#this show action is coming from 'add a product'.. daily_pick controller index action and index show page
+#this new action is copied from daily_pick controller index action and index show page
+  def new
+      @product = Product.date_match
+      @line_product = @product.line_products.build
+  end
+
+
 
   def create
 

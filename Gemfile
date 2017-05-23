@@ -36,6 +36,13 @@ gem 'paperclip', '~> 4.2'
 gem 'figaro'
 #to save uploaded images
 
+
+
+gem 'omniauth-facebook'
+
+
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
