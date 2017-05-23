@@ -1,33 +1,24 @@
 class LineProductsController < ApplicationController
 
-#this new action is copied from daily_pick controller index action and index show page
-  def new
+    def new
       @product = Product.date_match
       @line_product = @product.line_products.build
-  end
-
+    end
 
 
   def create
 
       @cart = current_user.current_cart ||= Cart.new
-      @cart.add_product(params)
-
-      if @cart.save
-         product_line_product(@line_product) #it has to go to line_product show action.. how?
-
-      else
+      @cart.add_product(line_params)
+        if @cart.save
+          redirect_to cart_path(@cart) #it has to go to line_product show action.. how?
+        else
         flash[:error] = 'There was a problem adding this item to your shopping bag.'
-        redirect :back
-
-      end
+        render :new
+        end
 
   end
 
-
-  def show
-      @cart = current_user.current_cart
-  end
 
   #
   # def update
@@ -50,6 +41,12 @@ class LineProductsController < ApplicationController
   #   def set_ordered_item
   #     @ordered_item = @cart.ordered_items.find_by(id: params[:item_id])
   #   end
+
+    private
+
+      def line_params
+        params.require(:line_product).permit(:quantity, :product_id)
+      end
 
 
 end

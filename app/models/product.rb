@@ -16,7 +16,7 @@ class Product < ApplicationRecord
   validates :date_delivered, uniqueness: true
   validate :delivery_date_cannot_be_in_the_past
 
-  accepts_nested_attributes_for :line_products
+  # accepts_nested_attributes_for :line_products
 
 
     def self.date_match

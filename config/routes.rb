@@ -10,9 +10,9 @@ resources :daily_picks, only: [:index]
 
   post "/products/new", to: "products#new"
 
-  resources :products do
+  resources :products
     resources :line_products, only: [:new, :create, :show, :index]
-end
+
 
 
 
