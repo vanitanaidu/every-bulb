@@ -5,10 +5,7 @@ class Product < ApplicationRecord
 
   has_attached_file :image,
                     :styles => { small: "64x64", med: "100x100", large: "200x200" },
-                    :default_url => "missing_:style.png",
-                  
-
-
+                    :bucket => "to-store-images-for-learn"
 
 
 
@@ -24,6 +21,11 @@ class Product < ApplicationRecord
 
     def self.date_match
       Product.where('DATE(date_delivered) = ?', Date.today).take
+    end
+
+    def self.delete_products_from_past
+      Product.where()
+
     end
 
 

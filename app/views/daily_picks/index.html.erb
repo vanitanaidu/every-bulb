@@ -2,7 +2,6 @@
  <h1> Daily Pick </h1>
 
 
-
     <p> <%= link_to image_tag @product.image.url(:large) %> <p>
 
      <%= @product.name %>
@@ -14,11 +13,13 @@
 
        <% if user_signed_in? %>
 
-           <%= form_for [@product, @line_product], method: :post do |f| %>
+           <%= form_for [@product, @line_product], url: product_line_product_path(@product, @line_product), method: :post do |f| %>
 
-              <%= f.label :quantity  %>
-              <%= f.text_field :quantity %>
-         <br>
+              <%= line_product.label :quantity  %>
+              <%= line_product.text_field :quantity %>
+              <br>
+
+
             <%= f.submit "Add to cart" %>
             <% end %>
 

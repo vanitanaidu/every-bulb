@@ -31,6 +31,9 @@ class Cart < ApplicationRecord
           current_product
         end
 
+
+  
+
         def checkout
             self.status = "submitted"
         end

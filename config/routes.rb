@@ -6,13 +6,15 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
+  resources :daily_picks, only: [:index]
+
   post "/products/new", to: "products#new"
 
   resources :products do
     resources :line_products, only: [:create, :show, :index]
 end
 
-  resources :daily_picks, only: [:index]
+
 
   resources :carts
   get 'carts/:id/checkout', to: 'carts#checkout'

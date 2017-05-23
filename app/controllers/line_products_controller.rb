@@ -1,19 +1,26 @@
 class LineProductsController < ApplicationController
 
+#this show action is coming from 'add a product'.. daily_pick controller index action and index show page
 
   def create
 
-    @cart = current_user.current_cart ||= Cart.new
-    @cart.add_product(params)
+      @cart = current_user.current_cart ||= Cart.new
+      @cart.add_product(params)
 
-    if @cart.save
-       redirect_to cart_path(@cart)
-      # render partial: 'carts/shopping_bag', locals: { order: @cart }
-    else
-      flash[:error] = 'There was a problem adding this item to your shopping bag.'
-      redirect :back
-    
-    end
+      if @cart.save
+         product_line_product(@line_product) #it has to go to line_product show action.. how?
+
+      else
+        flash[:error] = 'There was a problem adding this item to your shopping bag.'
+        redirect :back
+
+      end
+
+  end
+
+
+  def show
+      @cart = current_user.current_cart
   end
 
   #

@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
 
   def addresses_attributes=(addresses_attributes)
+    raise addresses_attributes.inspect
     addresses_attributes.each do |i, address_attributes|
       self.addresses.build(address_attributes)
     end
