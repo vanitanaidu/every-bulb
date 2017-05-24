@@ -7,7 +7,6 @@ class LineProductsController < ApplicationController
 
 
   def create
-
       @cart = current_user.current_cart ||= Cart.new
       @cart.add_product(line_params)
         if @cart.save

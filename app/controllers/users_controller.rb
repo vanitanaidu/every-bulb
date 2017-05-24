@@ -2,12 +2,11 @@ class UsersController < ApplicationController
 
   def new
     @user = current_user
-
     @user.addresses.build(address_type: "Shipping")
     @user.addresses.build(address_type: "Billing")
     @user.messages.build
-    @cart = current_user.current_cart
 
+    @cart = current_user.current_cart
   end
 
 
@@ -21,8 +20,8 @@ class UsersController < ApplicationController
     else
       render :new
     end
-
   end
+
 
   def show
 
@@ -30,13 +29,10 @@ class UsersController < ApplicationController
   end
 
 
-
-
-
   private
 
     def user_params
-      params.require(:user).permit(:addresses_attributes => [:id, :street_1, :street_2, :city, :state, :zip_code, :address_type], :messages_attributes => [:id, :content])
+      params.require(:user).permit(:id, :email, :addresses_attributes => [:user_id, :street_1, :street_2, :city, :state, :zip_code, :address_type], :messages_attributes => [:user_id, :content])
     end
 
 

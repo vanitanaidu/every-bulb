@@ -1,7 +1,5 @@
-
-
 <label> Delivery Address </label>
-<%= form_for (@user) do |f| %>
+<%= form_for(setup_user(@user)) do |f| %>
 <br>
     <%= f.fields_for :addresses do |address| %>
 
@@ -37,6 +35,8 @@
       <% end %>
 
 
+
+
 <% @cart.line_products.each do |line_product| %>
 
   <p><%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity  %>
@@ -46,5 +46,8 @@
 <p> Grand Total: <strong>$<%= @cart.total.to_f %></strong> </p>
 
 
+
+<%= link_to "Add a Message", new_user_message_path(current_user) %>
+<br>
       <%= f.submit "Review my Order" %>
       <% end %>

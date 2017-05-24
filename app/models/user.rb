@@ -6,11 +6,12 @@ class User < ApplicationRecord
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-
   has_many :carts
   has_one :current_cart, class_name: 'Cart'
   has_many :addresses
   has_many :messages
+
+
 
 
   def self.from_omniauth(auth)

@@ -20,7 +20,7 @@ resources :daily_picks, only: [:index]
   get 'carts/:id/checkout', to: 'carts#checkout'
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
 
-  resources :users, only: [:new, :update, :show] do
+  resources :users do
     resources :addresses
       resources :messages
   end
