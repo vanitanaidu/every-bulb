@@ -11,4 +11,8 @@ class CartsController < ApplicationController
     redirect_to new_user_path
   end
 
+  def cart_params
+    params.require(:cart).permit(:user_id)
+  end
+
 end

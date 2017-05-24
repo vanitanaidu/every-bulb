@@ -6,14 +6,13 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-resources :daily_picks, only: [:index]
+  # resources :daily_picks, only: [:index] delete this pls
 
   post "/products/new", to: "products#new"
 
   resources :products
-    resources :line_products, only: [:new, :create, :show, :index]
 
-
+  resources :line_products, only: [:new, :create, :show, :index]
 
 
   resources :carts

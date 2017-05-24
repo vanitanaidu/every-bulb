@@ -1,22 +1,22 @@
 class UsersController < ApplicationController
 
   def new
-    @user = current_user
-    @user.addresses.build(address_type: "Shipping")
-    @user.addresses.build(address_type: "Billing")
-    @user.messages.build
 
-    @cart = current_user.current_cart
+    current_user.addresses.build(address_type: "Shipping")
+    current_user.addresses.build(address_type: "Billing")
+    current_user.messages.build
+
+  
   end
 
 
   def update
 
-    @user = current_user
-    @user.update_attributes(user_params)
 
-    if @user.save
-      redirect_to @user
+    current_user.update_attributes(user_params)
+
+    if current_user.save
+      redirect_to current_user
     else
       render :new
     end
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
 
   def show
-
     @user = current_user
   end
 

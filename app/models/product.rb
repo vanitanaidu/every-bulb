@@ -7,13 +7,9 @@ class Product < ApplicationRecord
                     :styles => { small: "64x64", med: "100x100", large: "200x200" },
                     :bucket => "to-store-images-for-learn"
 
-
-
-  validates :image, :attachment_presence => true
+  validates :image, attachment_presence: true
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
-
-  validates :date_delivered, uniqueness: true
+  validates_uniqueness_of :date_delivered
   validate :delivery_date_cannot_be_in_the_past
 
 
@@ -23,14 +19,13 @@ class Product < ApplicationRecord
 
     def self.delete_products_from_past
       Product.where()
-
     end
 
 
     def delivery_date_cannot_be_in_the_past
       if date_delivered.present? && date_delivered < Date.today
         errors.add(:date_delivered, "can't be in the past")
-      end
+       end
     end
 
     def delivery_date

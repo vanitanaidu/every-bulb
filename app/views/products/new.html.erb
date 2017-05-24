@@ -1,18 +1,15 @@
 
-<%= form_for @product, html: { multipart: true } do |f| %>
-  <p> <%= f.label :name %>: </p>
-  <p>  <%= f.text_field :name %> </p>
+  <%= form_for @product, html: { multipart: true } do |f| %>
+  <p> <%= f.label :name %>:
+      <%= f.text_field :name %> </p>
 
-  <p> <%= f.label :description %>: </p>
-  <p> <%= f.text_field :description %> </p>
+  <p> <%= f.label :description %>:
+      <%= f.text_field :description %> </p>
 
+  <p> <%= f.label :date_delivered, "Delivery Day:" %>
+      <%= f.date_field :date_delivered, :value => Time.now.strftime("%B %e, %Y") %> </p>
 
-  <p> <%= f.label :date_delivered, "Delivery Day" %>: </p>
-      <%= f.date_field :date_delivered, :value => Time.now.strftime("%B %e, %Y") %>
-
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-<br>
-<br>
+  <p> <%= f.file_field :image %> </p>
+  <br>
   <%= f.submit "Create Flower" %>
   <% end %>
