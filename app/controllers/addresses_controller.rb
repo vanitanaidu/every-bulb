@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
 
+
   def new
     current_user.addresses.build(address_type: "Shipping")
     current_user.addresses.build(address_type: "Billing")
@@ -8,18 +9,68 @@ class AddressesController < ApplicationController
   end
 
 
-  def show
-    @user = current_user
-    @shipping_add = @user.addresses.find_by(address_type: "Shipping")
-    @billing_add = @user.addresses.find_by(address_type: "Billing")
-    @message = @user.messages.last
-  end
+  def create
+
+    if current_user.update(address_params)
+        flash[:notice] = "Success!"
+        redirect_to user_addresses_path(current_user)
+      else
+        flash[:error] = "Not Successful!"
+        render :new
+      end
+    end
+
+    def index
+      @user = current_user
+      @shipping_add = @user.addresses.find_by(address_type: "Shipping")
+      @billing_add = @user.addresses.find_by(address_type: "Billing")
+      @message = @user.messages.last
+    end
+
+
+  private
+
+    def address_params
+      params.require(:user).permit(:email, :addresses_attributes => [:id, :street_1, :street_2, :city, :state, :zip_code, :address_type], :messages_attributes => [:id, :content])
+    end
+
+
+  # <% if message.object.errors.any? %>
+  #   <div id="error_explanation">
+  #     <h2>
+  #       <%= pluralize(message.object.errors.count, "error") %>
+  #       prohibited this product from being saved:
+  #     </h2>
+  #
+  #     <ul>
+  #     <% message.object.errors.full_messages.each do |msg| %>
+  #       <li><%= msg %></li>
+  #     <% end %>
+  #     </ul>
+  #   </div>
+  # <% end %>
 
 
 
-  def update
-  end
 
+
+
+
+
+    # <% if address.object.errors.any? %>
+    #   <div id="error_explanation">
+    #     <h2>
+    #       <%= pluralize(address.object.errors.count, "error") %>
+    #       prohibited this product from being saved:
+    #     </h2>
+    #
+    #     <ul>
+    #     <% address.object.errors.full_messages.each do |msg| %>
+    #       <li><%= msg %></li>
+    #     <% end %>
+    #     </ul>
+    #   </div>
+    # <% end %>
 
 
 

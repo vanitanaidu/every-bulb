@@ -7,7 +7,6 @@ class CartsController < ApplicationController
 
   def checkout
     @cart.checkout
-
     redirect_to new_user_address_path(current_user) if @cart.valid?
   end
 

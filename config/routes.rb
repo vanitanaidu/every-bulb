@@ -7,23 +7,26 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  # resources :daily_picks, only: [:index] delete this pls
-
-  post "/products/new", to: "products#new"
 
   resources :products
+  post "/products/new", to: "products#new"
 
   resources :line_products, only: [:new, :create, :show, :index]
-
 
   resources :carts
   get 'carts/:id/checkout', to: 'carts#checkout'
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
+
+  get 'users/:id/thankyou', to: 'users#thankyou'
+  post 'users/:id/thankyou', to: 'users#thankyou', as: 'thankyou'
+
 
   resources :users do
     resources :products
     resources :addresses
       resources :messages
   end
+
+
 
 end

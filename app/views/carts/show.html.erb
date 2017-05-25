@@ -6,6 +6,5 @@
   <%= button_to 'Empty Cart', cart_path(@cart), method: :delete, :data => {:confirm => 'This will delete everything in your cart. Are you sure?'} %>
   <br></br>
 
-  <% if @cart.status == 'not submitted' %>
-    <%= button_to 'Proceed to Checkout', checkout_path %>
-  <% end %>
+
+    <%= button_to 'Proceed to Checkout', checkout_path, method: :post %>
