@@ -3,8 +3,10 @@ class UsersController < ApplicationController
   def update
     current_user.update_attributes(user_params)
     if current_user.save
+      flash[:notice] = "Successfully added new flower!"
       redirect_to user_address_path(current_user)
     else
+
       render :new
     end
   end

@@ -32,22 +32,16 @@ ActiveRecord::Schema.define(version: 20170523040012) do
   end
 
   create_table "line_products", force: :cascade do |t|
-    t.integer  "quantity",   default: 0
+    t.integer  "quantity"
     t.integer  "product_id"
     t.integer  "cart_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
     t.text    "content"
     t.integer "user_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -61,16 +55,6 @@ ActiveRecord::Schema.define(version: 20170523040012) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "price",              default: 30, null: false
-  end
-
-  create_table "recipients", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "message"
-    t.integer  "mobile_number"
-    t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

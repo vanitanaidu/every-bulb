@@ -1,19 +1,18 @@
 class CartsController < ApplicationController
+  before_action :set_cart, only: [:checkout, :destroy, :show]
 
   def show
-    @cart = current_user.current_cart
+
   end
 
   def checkout
-    cart = current_user.current_cart
-    cart.checkout
+    @cart.checkout
 
-    redirect_to new_user_address_path(current_user)
+    redirect_to new_user_address_path(current_user) if @cart.valid?
   end
 
   def destroy
-    cart = current_user.current_cart
-    product = cart.products
+    product = @cart.products
     if product
       product.delete_all
     end
@@ -24,6 +23,10 @@ class CartsController < ApplicationController
 
       def cart_params
         params.require(:cart).permit(:user_id)
+      end
+
+      def set_cart
+        @cart = current_user.current_cart
       end
 
     # def update

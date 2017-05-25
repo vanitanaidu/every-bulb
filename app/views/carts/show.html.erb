@@ -1,13 +1,7 @@
 <h1>Your Cart</h1>
 
-Render a partial here! for this page and Address#new.. need a local @cart
+  <%= render partial: "cart", locals: {cart: @cart} %>
 
-
-  <% @cart.line_products.each do |line_product| %>
-    <p> <%= image_tag line_product.product.image.url(:med) %> <%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity %> </p>
-  <% end %>
-
-  <p> Grand Total: <strong><%= number_to_currency(@cart.total.to_f) %></strong> </p>
 
   <%= button_to 'Empty Cart', cart_path(@cart), method: :delete, :data => {:confirm => 'This will delete everything in your cart. Are you sure?'} %>
   <br></br>

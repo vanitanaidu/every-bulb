@@ -11,10 +11,9 @@ class ProductsController < ApplicationController
     def create
       @product = Product.new(product_params)
       if @product.save
-        flash[:notice] = "Successfully added new photo!"
+        flash[:notice] = "Successfully added new flower!"
         redirect_to @product
       else
-        flash[:alert] = "Error adding new photo!"
         render :new
       end
     end

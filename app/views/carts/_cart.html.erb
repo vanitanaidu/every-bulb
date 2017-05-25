@@ -1,0 +1,6 @@
+<% cart.line_products.each do |line_product| %>
+
+  <p> <%= image_tag line_product.product.image.url(:med) %> <%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity %> </p>
+<% end %>
+
+<p> Grand Total: <strong><%= number_to_currency(cart.total.to_f) %></strong> </p>

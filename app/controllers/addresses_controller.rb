@@ -3,7 +3,8 @@ class AddressesController < ApplicationController
   def new
     current_user.addresses.build(address_type: "Shipping")
     current_user.addresses.build(address_type: "Billing")
-    current_user.messages.build
+    @messages = current_user.messages.build
+    @cart = current_user.current_cart
   end
 
 

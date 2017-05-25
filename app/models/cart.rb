@@ -15,7 +15,6 @@ class Cart < ApplicationRecord
     end
 
     def add_product(line_params)
-
       current_product = line_products.find_by(product_id: line_params[:product_id])
         if current_product
           current_product.quantity += line_params[:quantity].to_i
