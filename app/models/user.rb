@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :carts
   has_one :current_cart, class_name: 'Cart'
-  has_many :addresses
+  has_many :addresses, inverse_of: :user
   has_many :messages
 
 

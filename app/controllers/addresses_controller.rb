@@ -22,6 +22,7 @@ class AddressesController < ApplicationController
 
     def index
       @user = current_user
+      binding.pry
       @shipping_add = @user.addresses.find_by(address_type: "Shipping")
       @billing_add = @user.addresses.find_by(address_type: "Billing")
       @message = @user.messages.last
