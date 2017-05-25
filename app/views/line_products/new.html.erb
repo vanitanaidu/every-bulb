@@ -1,24 +1,24 @@
-Page that displays the image with the delivery date, quantiy and add to cart feauture
-<br>
-      <%= link_to image_tag @product.image.url(:large)  %>
 
-<br>
-     <%= @product.name %>
-     <br>
-
-     <%= @product.description %>
-     <br>
-     Delivery Date: Today! (<%= @product.delivery_date %>)
-
-      <% if user_signed_in? %>
-          <%= form_for @line_product do |f| %>
-            <%= f.hidden_field :product_id %>
-            <%= f.label :quantity  %>
-            <%= f.text_field :quantity %>
-             <br>
-             <%= f.submit "Add to cart" %>
-          <% end %>
+    <%= link_to @product.image.url do %>
+      <%= image_tag(@product.image.url(:large)) %>
+    <% end %>
+    <br></br>
+    <%= @product.name %>
+    <br></br>
+    <%= @product.description %>
+    <br></br>
+    <strong> Delivery Date: Today! (<%= @product.delivery_date %>) </strong>
+    <br></br>
+    
+    <% if user_signed_in? %>
+      <%= form_for @line_product do |f| %>
+        <%= f.hidden_field :product_id %>
+        <%= f.label :quantity  %>
+        <%= f.text_field :quantity %>
+         <br></br>
+      <%= f.submit "Add to cart" %>
+      <% end %>
 
       <% else %>
         Please sign in to add this item to the cart
-      <% end %> 
+    <% end %>

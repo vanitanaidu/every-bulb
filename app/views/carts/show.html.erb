@@ -1,13 +1,17 @@
 <h1>Your Cart</h1>
 
-Render a partial here!
+Render a partial here! for this page and Address#new.. need a local @cart
 
 
   <% @cart.line_products.each do |line_product| %>
-    <p><%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity  %>
-  <% end %> </p>
+    <p> <%= image_tag line_product.product.image.url(:med) %> <%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity %> </p>
+  <% end %>
 
-  <p> Grand Total: <strong>$<%= @cart.total.to_f %></strong> </p>
+  <p> Grand Total: <strong><%= number_to_currency(@cart.total.to_f) %></strong> </p>
+
+  <%= button_to 'Empty Cart', cart_path(@cart), method: :delete, :data => {:confirm => 'This will delete everything in your cart. Are you sure?'} %>
+  <br></br>
+
   <% if @cart.status == 'not submitted' %>
     <%= button_to 'Proceed to Checkout', checkout_path %>
   <% end %>

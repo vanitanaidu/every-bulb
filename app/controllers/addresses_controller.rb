@@ -1,5 +1,27 @@
 class AddressesController < ApplicationController
 
+  def new
+    current_user.addresses.build(address_type: "Shipping")
+    current_user.addresses.build(address_type: "Billing")
+    current_user.messages.build
+  end
+
+
+  def show
+    @user = current_user
+    @shipping_add = @user.addresses.find_by(address_type: "Shipping")
+    @billing_add = @user.addresses.find_by(address_type: "Billing")
+    @message = @user.messages.last
+  end
+
+
+
+  def update
+  end
+
+
+
+
 
   # def new
   #   @address = Address.new

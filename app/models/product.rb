@@ -17,10 +17,6 @@ class Product < ApplicationRecord
       Product.where('DATE(date_delivered) = ?', Date.today).take
     end
 
-    def self.delete_products_from_past
-      Product.where()
-    end
-
 
     def delivery_date_cannot_be_in_the_past
       if date_delivered.present? && date_delivered < Date.today

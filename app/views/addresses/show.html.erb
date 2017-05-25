@@ -1,0 +1,24 @@
+<h2> Please Review Your Order </h2>
+
+  <h3> <%= @shipping_add.address_type %>: </h3>
+
+        <p> <%= @shipping_add.street_1 %> </p>
+        <p> <%= @shipping_add.street_2 %> </p>
+        <p> <%= @shipping_add.city %> </p>
+        <p> <%= @shipping_add.state %> </p>
+        <p> <%= @shipping_add.zip_code %> </p>
+
+  <h3> <%= @billing_add.address_type %>: </h3>
+
+        <p> <%= @billing_add.street_1 %> </p>
+        <p> <%= @billing_add.street_2 %> </p>
+        <p> <%= @billing_add.city %> </p>
+        <p> <%= @billing_add.state %> </p>
+        <p> <%= @billing_add.zip_code %> </p>
+
+
+  <h3> Message to Recipient: </h3>
+
+        <p> <%= @message.content %> </p>
+
+  <%= button_to 'Place my Order', edit_user_address_path(current_user, @billing_add), method: :post %>

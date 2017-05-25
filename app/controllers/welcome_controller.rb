@@ -5,6 +5,13 @@ class WelcomeController < ApplicationController
     @products = Product.all
   end
 
+
+
+
+
+
+
+
  # (<%= product.date_delivered.strftime("%B %e, %Y") %>)
 
  # image_tag "flowers/#{rand(9)}.jpg"

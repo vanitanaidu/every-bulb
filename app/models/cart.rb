@@ -6,7 +6,6 @@ class Cart < ApplicationRecord
   has_many :products, through: :line_products
 
 
-
     def total
       total = 0
       self.line_products.each do |line_product|
@@ -15,8 +14,8 @@ class Cart < ApplicationRecord
         total
     end
 
-
     def add_product(line_params)
+
       current_product = line_products.find_by(product_id: line_params[:product_id])
         if current_product
           current_product.quantity += line_params[:quantity].to_i
@@ -30,6 +29,10 @@ class Cart < ApplicationRecord
           current_product
      end
 
+    #  def delete_past_product
+     #
+    #   #  Product.where('DATE(date_delivered) < ?', Date.today).delete_all
+    #  end
 
      def checkout
       self.status = "submitted"

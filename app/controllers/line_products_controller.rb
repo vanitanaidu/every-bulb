@@ -4,48 +4,24 @@ class LineProductsController < ApplicationController
       @product = Product.date_match
       @line_product = @product.line_products.build
     end
- # <p> <%= link_to image_tag @product.image.url(:large), @product.image.url
 
-  def create
+    def create
       @cart = current_user.current_cart ||= Cart.new
+      # @cart.delete_past_product
       @cart.add_product(line_params)
-        if @cart.save
-          redirect_to cart_path(@cart) #it has to go to line_product show action.. how?
-        else
-        flash[:error] = 'There was a problem adding this item to your shopping bag.'
+      if @cart.save
+        redirect_to @cart
+      else
+        flash[:error] = "You can't order more than 2 bouquets."
         render :new
-        end
-
-  end
-
-
-  #
-  # def update
-  #   @line_product = line_product.update(quantity: params[:line_product][:quantity]) if @line_product
-  #
-  #   if @line_product.save
-  #     render json: { itemPrice: @line_product.quantity * @line_product.product.price, subtotal: @cart.total_price }
-  #   else
-  #     flash.now[:error] = 'There was a problem updating your shopping bag.'
-  #   end
-  # end
-  #
-  # def destroy
-  #   @ordered_item.destroy
-  #   render json: { order_total: "$%.2f" % @cart.total_price }
-  # end
-  #
-  # private
-  #
-  #   def set_ordered_item
-  #     @ordered_item = @cart.ordered_items.find_by(id: params[:item_id])
-  #   end
+      end
+    end
 
     private
 
       def line_params
         params.require(:line_product).permit(:quantity, :product_id)
-      end
+    end
 
 
 end
