@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :carts, through: :line_products
 
   has_attached_file :image,
-                    :styles => { small: "64x64", med: "100x100", large: "200x200" },
+                    :styles => { small: "64x64", med: "100x100", large: "140x140" },
                     :bucket => "to-store-images-for-learn"
 
   validates :image, attachment_presence: true

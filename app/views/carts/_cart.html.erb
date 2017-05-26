@@ -1,13 +1,11 @@
-<body class=center>
+
 
 
   <% cart.line_products.each do |line_product| %>
 
-<p class=img> <%= image_tag line_product.product.image.url(:med) %></p>
-    <p class=txt> <%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity %>
-<% end %>
+    <%= image_tag line_product.product.image.url(:med) %>
+    <%= line_product.product.name %> | <%= number_to_currency(line_product.product.price.to_f) %> | Quantity: <%= line_product.quantity %>
+  <% end %>
 <br>
-Grand Total: <strong><%= number_to_currency(cart.total.to_f) %></strong> </p>
 
-
-</body>
+ <p>Grand Total: <strong><%= number_to_currency(cart.total.to_f) %></strong></p>
