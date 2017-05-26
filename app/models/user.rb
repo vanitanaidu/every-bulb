@@ -8,11 +8,11 @@ class User < ApplicationRecord
 
   has_many :carts
   has_one :current_cart, class_name: 'Cart'
-  has_many :addresses
-  has_many :messages
+  has_many :addresses, :inverse_of => :user
+  has_many :messages, :inverse_of => :user
 
-  validates_associated :addresses
-  validates_associated :messages
+  # validates_associated :addresses
+  # validates_associated :messages
 
 
 
