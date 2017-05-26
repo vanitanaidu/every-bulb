@@ -3,25 +3,23 @@
 
 <%= form_for current_user, :url => user_addresses_path(current_user), method: :post do |f| %>
 
+<% if current_user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(current_user.errors.count, "error") %>
+      prohibited this product from being saved:
+    </h2>
+
+    <ul>
+    <% current_user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
   <%= f.fields_for :addresses do |address| %>
-
-
-
-    <% if address.object.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(address.object.errors.count, "error") %>
-          prohibited this product from being saved:
-        </h2>
-
-        <ul>
-        <% address.object.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
 
 
     <% if !address.object.id.present? %>
@@ -72,7 +70,7 @@
     <% end %>
   <% end %>
 
-      <%= render partial: "carts/cart", locals: {cart: @cart}  %>
+      <%= render partial: "carts/cart", locals: {cart: current_user.current_cart}  %>
 
   <%= f.submit "Review my Order" %>
 <% end %>

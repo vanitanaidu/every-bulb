@@ -4,35 +4,44 @@ class AddressesController < ApplicationController
   def new
     current_user.addresses.build(address_type: "Shipping")
     current_user.addresses.build(address_type: "Billing")
-    @messages = current_user.messages.build
-    @cart = current_user.current_cart
+    current_user.messages.build
   end
 
 
   def create
-
     if current_user.update(address_params)
-        flash[:notice] = "Success!"
-        redirect_to user_addresses_path(current_user)
-      else
-        flash[:error] = "Not Successful!"
-        render :new
-      end
+      flash[:notice] = "Success!"
+      redirect_to user_addresses_path(current_user)
+    else
+      flash[:error] = "Not Successful"
+      render :new
     end
 
+    # @user = current_user.update(address_params)
+    #   if @user
+    #     flash[:notice] = "Success!"
+    #     redirect_to user_addresses_path(current_user)
+    #   else
+    #     flash[:error] = "Not Successful"
+    #     render :new`
+    #
+    # end
+  end
+
     def index
-      @user = current_user
-      binding.pry
-      @shipping_add = @user.addresses.find_by(address_type: "Shipping")
-      @billing_add = @user.addresses.find_by(address_type: "Billing")
-      @message = @user.messages.last
+      @shipping_add = current_user.addresses.find_by(address_type: "Shipping")
+      @billing_add = current_user.addresses.find_by(address_type: "Billing")
+      @message = current_user.messages.last
     end
 
 
   private
 
+
+
+
     def address_params
-      params.require(:user).permit(:email, :addresses_attributes => [:id, :street_1, :street_2, :city, :state, :zip_code, :address_type], :messages_attributes => [:id, :content])
+      params.require(:user).permit(:email, :addresses_attributes => [:street_1, :street_2, :city, :state, :zip_code, :address_type], :messages_attributes => [:content])
     end
 
 
