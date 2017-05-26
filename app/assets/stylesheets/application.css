@@ -14,4 +14,36 @@
  *= require_self
  */
 
- 
+/*  Errors */
+.field_with_errors {
+  padding: 2px;
+  display: table;
+  border-style: solid;
+  border-color: red;
+}
+
+
+
+
+.has-signup-error{
+  .signup-error{
+    background: transparent;
+    color: $brand-danger;
+    border: none;
+  }
+
+  input, select{
+    background-color: $bg-danger;
+    border-color: $brand-danger;
+    color: $gray-base;
+    font-weight: 500;
+  }
+
+  &.checkbox{
+    label{
+      &:before{
+        background-color: $bg-danger;
+        border-color: $brand-danger;
+      }
+    }
+  }

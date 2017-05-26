@@ -1,8 +1,8 @@
 class LineProductsController < ApplicationController
+  helper_method :product
 
     def new
-      @product = Product.date_match
-      @line_product = @product.line_products.build
+      @line_product = product.line_products.build
     end
 
     def create
@@ -10,10 +10,8 @@ class LineProductsController < ApplicationController
       # @cart.delete_past_product
       @line_product = cart.add_product(line_params)
       if @line_product.save
-        flash[:notice] = "Successfully added to cart!"
         redirect_to cart_path(current_user.current_cart)
       else
-        flash[:error] = "Can't add to cart!"
         render :new
       end
     end
@@ -23,6 +21,12 @@ class LineProductsController < ApplicationController
     end
 
     private
+
+      def product
+        Product.date_match
+      end
+
+
 
       def line_params
         params.require(:line_product).permit(:quantity, :product_id)

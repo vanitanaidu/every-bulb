@@ -4,7 +4,7 @@
 <%= form_for current_user, :url => user_addresses_path(current_user), method: :post do |f| %>
 
 <% if current_user.errors.any? %>
-  <div id="error_explanation">
+  <div class="field_with_errors">
     <h2>
       <%= pluralize(current_user.errors.count, "error") %>
       prevented your order from being processed:
