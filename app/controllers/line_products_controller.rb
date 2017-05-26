@@ -1,14 +1,16 @@
 class LineProductsController < ApplicationController
-  helper_method :product
+  # helper_method :product
 
     def new
-      @line_product = product.line_products.build
+
+      @product = Product.date_match
+      @line_product = @product.line_products.build
     end
 
     def create
       cart = current_user.current_cart ||= Cart.new
-      # @cart.delete_past_product
       @line_product = cart.add_product(line_params)
+        binding.pry
       if @line_product.save
         redirect_to cart_path(current_user.current_cart)
       else
@@ -16,17 +18,14 @@ class LineProductsController < ApplicationController
       end
     end
 
-
     def show
     end
 
-    private
+      private
 
-      def product
-        Product.date_match
-      end
-
-
+      # def product
+      #   Product.date_match
+      # end
 
       def line_params
         params.require(:line_product).permit(:quantity, :product_id)
@@ -34,17 +33,3 @@ class LineProductsController < ApplicationController
 
 
 end
-
-
-    # <!-- <% if object.errors.any? %>
-    #   <h2> Whoops! </h2>
-    #   <div id="error_explanation" class= "fields_with_errors">
-    #     <h2> <%= number_to_word(object.errors.count) %> error(s) prevented this object from being saved: </h2>
-    #     <ul>
-    #     <% object.errors.full_messages.each do |message| %>
-    #       <li style="color:red;"> <%= message %> </li>
-    #       <br>
-    #     <% end %>
-    #     </ul>
-    #   </div>
-    # <% end %> -->

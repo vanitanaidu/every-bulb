@@ -20,27 +20,13 @@ class CartsController < ApplicationController
 
     private
 
-      def cart_params
-        params.require(:cart).permit(:user_id)
-      end
+    def cart_params
+      params.require(:cart).permit(:user_id)
+    end
 
-      def set_cart
-        @cart = current_user.current_cart
-      end
+    def set_cart
+      @cart = current_user.current_cart
+    end
 
-    # def update
-    #   @line_product = line_product.update(quantity: params[:line_product][:quantity]) if @line_product
-    #
-    #   if @line_product.save
-    #     @line_product.quantity * @line_product.product.price, subtotal: @cart.total_price
-    #   else
-    #     flash.now[:error] = 'There was a problem updating your shopping bag.'
-    #   end
-    # end
-    #
-    # def destroy
-    #   @ordered_item.destroy
-    #   order_total: "$%.2f" % @cart.total_price
-    # end
 
 end

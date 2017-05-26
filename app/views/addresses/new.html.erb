@@ -1,7 +1,7 @@
 <h3> Delivery Address </h3>
 
 
-<%= form_for current_user, :url => user_addresses_path(current_user), method: :post do |f| %>
+<%= form_for user, :url => user_addresses_path(user), method: :post do |f| %>
 
   <%= f.fields_for :addresses do |address| %>
 
@@ -62,7 +62,7 @@
   <% end %>
 
 
-      <%= render partial: "carts/cart", locals: {cart: current_user.current_cart}  %>
+      <%= render partial: "carts/cart", locals: {cart: user.current_cart}  %>
 
 
   <%= f.submit "Review my Order" %>

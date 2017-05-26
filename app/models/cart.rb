@@ -11,7 +11,7 @@ class Cart < ApplicationRecord
       self.line_products.each do |line_product|
         total += line_product.product.price * line_product.quantity
       end
-        total
+      total
     end
 
     def add_product(line_params)
@@ -25,18 +25,12 @@ class Cart < ApplicationRecord
           current_product.product_id = line_params[:product_id]
           current_product.save
         end
-          current_product
+        current_product
      end
-
-    #  def delete_past_product
-     #
-    #   #  Product.where('DATE(date_delivered) < ?', Date.today).delete_all
-    #  end
 
      def checkout
       self.status = "submitted"
      end
-
 
 
 end

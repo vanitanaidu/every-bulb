@@ -1,10 +1,9 @@
+
 <h1>Your Cart</h1>
 
   <%= render partial: "cart", locals: {cart: @cart} %>
 
-
   <%= button_to 'Empty Cart', cart_path(@cart), method: :delete, :data => {:confirm => 'This will delete everything in your cart. Are you sure?'} %>
   <br></br>
 
-
-    <%= button_to 'Proceed to Checkout', checkout_path, method: :post %>
+  <%= button_to 'Proceed to Checkout', checkout_path, method: :post %>

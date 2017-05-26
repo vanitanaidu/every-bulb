@@ -2,10 +2,15 @@ class UsersController < ApplicationController
 
 
   def thankyou
-    current_user.current_cart.checkout
-    current_user.current_cart.delete
-
+    user.checkout
+    user.delete
   end
+
+    private
+
+    def user
+      current_user.current_cart
+    end
 
 
 end
