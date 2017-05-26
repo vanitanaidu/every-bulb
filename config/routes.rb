@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   get 'carts/:id/checkout', to: 'carts#checkout'
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
 
-  get 'users/:id/thankyou', to: 'users#thankyou'
-  post 'users/:id/thankyou', to: 'users#thankyou', as: 'thankyou'
+  get 'users/:id/thank_you', to: 'users#thank_you'
+  post 'users/:id/thank_you', to: 'users#thank_you', as: 'thank_you'
 
 
   resources :users do

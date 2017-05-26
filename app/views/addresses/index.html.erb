@@ -17,8 +17,13 @@
         <p> <%= @billing_add.state.titleize %> </p>
         <p> <%= @billing_add.zip_code %> </p>
 
+
+
   <h3> Message to Recipient: </h3>
 
-        <p> <%= @message.content.titleize %> </p>
+    <p> <%= @message.content.titleize %> </p>
+    <p> <% if @message.content.empty? %> </p>
+      <p> <h3> You have no messages </h3> </p>
+        <% end %>
 
-  <%= button_to 'Place my Order', thankyou_path(current_user), data: { confirm: 'Confirm?' } %>
+   <%= button_to 'Place my Order', thank_you_path(current_user), data: { confirm: 'Confirm?' } %>
