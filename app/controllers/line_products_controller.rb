@@ -1,10 +1,9 @@
 class LineProductsController < ApplicationController
-  # helper_method :product
+   helper_method :product
 
     def new
-
-      @product = Product.date_match
-      @line_product = @product.line_products.build
+      product = Product.date_match
+      @line_product = product.line_products.build
     end
 
     def create
@@ -22,9 +21,9 @@ class LineProductsController < ApplicationController
 
       private
 
-      # def product
-      #   Product.date_match
-      # end
+      def product
+        Product.date_match
+      end
 
       def line_params
         params.require(:line_product).permit(:quantity, :product_id)
