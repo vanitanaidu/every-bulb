@@ -1,8 +1,14 @@
+<body class=center>
+
 
 <h1> Daily Pick </h1>
 
-    <%= link_to new_line_product_path do %>
+    <p> <%= link_to new_line_product_path do %>
       <%= image_tag(@product.image.url(:large)) %>
-    <% end %>
+    <% end %> </p>
 
     <%= render partial: "product", locals: {product: @product} %>
+
+
+
+</body>

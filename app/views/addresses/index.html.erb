@@ -1,4 +1,6 @@
 
+<body class=center>
+
 <h2> Please Review Your Order </h2>
 
   <h3> <%= @shipping_add.address_type %>: </h3>
@@ -27,3 +29,6 @@
         <% end %>
 
    <%= button_to 'Place my Order', thank_you_path(current_user), data: { confirm: 'Confirm?' } %>
+
+
+</body>

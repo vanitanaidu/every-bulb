@@ -14,13 +14,37 @@
  *= require_self
  */
 
-/*  Errors */
+
+
+/*------  Errors --------------------------- */
 .field_with_errors {
   padding: 2px;
   display: table;
   border-style: solid;
   border-color: red;
 }
+
+/*------  Body --------------------------- */
+
+.center {
+    margin: auto;
+    width: 80%;
+    border: 3px solid green;
+    padding: 20px;
+    text-align: center;
+}
+
+.img {
+    float:left;
+}
+
+.txt {
+    float:right;
+}
+
+
+
+
 
 
 
