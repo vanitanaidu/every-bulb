@@ -10,7 +10,6 @@ class LineProductsController < ApplicationController
     def create
       cart = current_user.current_cart ||= Cart.new
       @line_product = cart.add_product(line_params)
-        binding.pry
       if @line_product.save
         redirect_to cart_path(current_user.current_cart)
       else
