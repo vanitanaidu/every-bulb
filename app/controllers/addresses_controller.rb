@@ -7,7 +7,6 @@ class AddressesController < ApplicationController
     current_user.messages.build
   end
 
-
   def create
     if current_user.update(address_params)
       flash[:notice] = "Your Order Was Successful"
@@ -16,20 +15,10 @@ class AddressesController < ApplicationController
       flash[:error] = "Sorry. Your Order Did Not Go Through"
       render :new
     end
-
-    # @user = current_user.update(address_params)
-    #   if @user
-    #     flash[:notice] = "Success!"
-    #     redirect_to user_addresses_path(current_user)
-    #   else
-    #     flash[:error] = "Not Successful"
-    #     render :new`
-    #
-    # end
   end
 
     def index
-    @shipping_add = current_user.addresses.find_by(address_type: "Shipping")
+      @shipping_add = current_user.addresses.find_by(address_type: "Shipping")
       @billing_add = current_user.addresses.find_by(address_type: "Billing")
       @message = current_user.messages.last
     end

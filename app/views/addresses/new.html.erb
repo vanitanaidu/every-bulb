@@ -3,31 +3,14 @@
 
 <%= form_for current_user, :url => user_addresses_path(current_user), method: :post do |f| %>
 
-<% if current_user.errors.any? %>
-  <div class="field_with_errors">
-    <h2>
-      <%= pluralize(current_user.errors.count, "error") %>
-      prevented your order from being processed:
-    </h2>
-
-    <ul>
-
-    <% current_user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
-
-
-
   <%= f.fields_for :addresses do |address| %>
-
 
     <% if !address.object.id.present? %>
       <%= address.hidden_field :address_type %>
+
+
+      <%= render partial: "form_errors", locals: {form: address} %>
+
 
       <label><%= address.object.address_type %></label>
       <fieldset>
@@ -60,13 +43,16 @@
   <% end %>
 
 
-
   <%= f.fields_for :messages do |message| %>
-
 
     <% if !message.object.id.present? %>
       <label> Message to Recipient </label>
       <fieldset>
+
+
+    <%= render partial: "form_errors", locals: {form: message} %>
+
+
         <p>
           <%= message.label :content %>
           <%= message.text_area :content %>
@@ -75,7 +61,9 @@
     <% end %>
   <% end %>
 
+
       <%= render partial: "carts/cart", locals: {cart: current_user.current_cart}  %>
+
 
   <%= f.submit "Review my Order" %>
 <% end %>

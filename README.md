@@ -12,3 +12,5 @@ project name
  4. Run `rake db:seed`
  5. Run `rails s`
  6. Click the link given for the IP address or localhost to start exploring
+
+ do this when u seed for admin priviledges  @product.image.create!(filename: 'app/assets/other/image.jpg')

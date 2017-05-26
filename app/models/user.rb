@@ -11,12 +11,6 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :messages
 
-  validates_associated :addresses
-  validates_associated :messages
-
-  
-
-
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,21 +19,17 @@ class User < ApplicationRecord
     end
   end
 
-
    def addresses_attributes=(addresses_attributes)
      addresses_attributes.each do |i, address_attributes|
        self.addresses.build(address_attributes)
      end
    end
 
-
    def messages_attributes=(messages_attributes)
      messages_attributes.each do |i, message_attributes|
        self.messages.build(message_attributes)
      end
    end
-
-
 
 
 end

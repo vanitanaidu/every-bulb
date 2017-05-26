@@ -22,4 +22,4 @@
 
         <p> <%= @message.content.titleize %> </p>
 
-  <%= button_to 'Place my Order', thankyou_path(current_user) %>
+  <%= button_to 'Place my Order', thankyou_path(current_user), data: { confirm: 'Confirm?' } %>

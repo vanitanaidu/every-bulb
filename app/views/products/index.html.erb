@@ -1,12 +1,10 @@
 
-<h1> Our Flower Gallery </h1>
+  <h1> Our Flower Gallery </h1>
 
-<% @products.each do |product| %>
-<br>
+  <% @products.each do |product| %>
+  <br>
 
+  <%= image_tag "flowers/#{rand(9)}.jpg" %>
 
-<%= image_tag "flowers/#{rand(9)}.jpg" %>
-
-
-<br>
-<% end %>
+  <br>
+  <% end %>
