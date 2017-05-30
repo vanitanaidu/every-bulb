@@ -1,5 +1,5 @@
 <body class=center>
-  
+
   <%= form_for @product, html: { multipart: true } do |f| %>
 
     <% if @product.errors.any? %>
@@ -31,7 +31,6 @@
       <%= f.date_field :date_delivered, :value => Time.now.strftime("%B %e, %Y") %> </p>
 
 
-  <p> <%= f.file_field :image %> </p>
 
   <p> <%= f.submit "Create Flower" %> </p>
   <% end %>

@@ -3,16 +3,12 @@ class Product < ApplicationRecord
   has_many :line_products
   has_many :carts, through: :line_products
 
-  has_attached_file :image,
-                    :styles => { small: "64x64", med: "100x100", large: "140x140" },
-                    :bucket => "to-store-images-for-learn"
 
-  validates :image, attachment_presence: true
   validates :name, presence: true
   validates :description, presence: true
   validates :date_delivered, presence: true
 
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   validates_uniqueness_of :date_delivered
   validate :delivery_date_cannot_be_in_the_past
 
