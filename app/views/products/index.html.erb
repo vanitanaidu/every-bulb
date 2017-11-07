@@ -1,16 +1,21 @@
+
 <body class=center>
 
+<h2> Flower picks in the past </h2>
 
-  <h1> Our Flower Gallery </h1>
+ <br></br>
+ <%= image_tag "flowers/#{rand(9)}.jpg" %>
+ <br>
 
-  <% @products.each do |product| %>
-  <br>
+ <%= @products.first.name %> (<%= @products.first.date_delivered ? @products.first.delivery_date : "" %>)
+ <br>
+ <%= @products.first.description %>
+ <br></br>
+ <br></br>
 
-  <%= image_tag "flowers/#{rand(9)}.jpg" %>
-
-  <br>
-  <% end %>
-
-
-
-</body>
+ <%= image_tag "flowers/#{rand(4)}.jpg" %>
+ <br>
+ <%= @products.second.name %> (<%= @products.second.date_delivered ? @products.second.delivery_date : "" %>)
+ <br>
+ <%= @products.second.description %>
+ <br></br>
