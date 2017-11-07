@@ -20,4 +20,4 @@ This app is a online flower store. The user who has an admin role (in real life,
 
  ## Blog ##
 
-  git@github.com:vanitanaidu/every-bulb.git
+  http://vanitanaidueckert.com/2017/05/29/nested_form_for_an_existing_parent_record/
