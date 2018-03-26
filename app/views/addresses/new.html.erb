@@ -10,10 +10,7 @@
 
         <% if !address.object.id.present? %>
           <%= address.hidden_field :address_type %>
-
-
           <%= render partial: "form_errors", locals: {form: address} %>
-
 
           <label><%= address.object.address_type %></label>
           <fieldset>
